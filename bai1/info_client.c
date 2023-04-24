@@ -67,6 +67,7 @@ int main() {
     send(client, buf, pos, 0);
 
     // Ket thuc, dong socket
+    
     close(client);
 
     return 0;
