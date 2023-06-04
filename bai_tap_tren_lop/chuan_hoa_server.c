@@ -49,7 +49,7 @@ void chuanHoa(char a[])
     //Xóa khoảng trắng không hợp lệ(khoảng trắng bị thừa)
     for(int i=1;i<n-1;i++)
     {
-        if(a[i]==a[i+1]){
+        if(a[i]==a[i+1] && a[i]==' '){
             for(int j=i;j<n-1;j++){
                 a[j] = a[j+1];
             }
