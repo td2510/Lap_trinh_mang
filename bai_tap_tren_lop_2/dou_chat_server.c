@@ -16,6 +16,7 @@ int num_users = 0;  // So luong client da dang nhap
 
 int main()
 {
+    
     int listener = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (listener == -1)
     {
