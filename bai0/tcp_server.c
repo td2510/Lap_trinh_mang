@@ -38,21 +38,28 @@ int main(int argc, char *argv[])
         perror("listen() failed");
         return 1;
     }
-
+    printf("yo\n");
     struct sockaddr_in clientAddr;
     int clientAddrLen = sizeof(addr);
-
+    
     int client = accept(listener, (struct sockaddr *)&clientAddr, &clientAddrLen);
-    if (client != -1)
-    {
-        FILE *f1 = fopen(file1,"a");
-        fprintf(f1, "Hello client\n");
-        fclose(f1);
-    }
+    // if (client != -1)
+    // {
+    //     FILE *f1 = fopen(file1,"a");
+    //     fprintf(f1, "Hello client\n");
+    //     fclose(f1);
+    // }
     printf("Client IP: %s:%d\n", inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port));
 
-    char *msg = "Hello client\n";
-    send(client, msg, strlen(msg), 0);
+    char *string = (char*)malloc(sizeof(char) * 100);
+    FILE *f1 = fopen(file1,"rt");    
+    while(!feof(f1)){
+        fgets(string,100,f1); //Lệnh đọc xâu
+    }
+    fclose(f1);
+
+    send(client, string, strlen(string), 0);
+    free(string);
 
     char buf[256];
 
